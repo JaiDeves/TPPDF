@@ -14,7 +14,10 @@ import UIKit
 public class PDFGroup: PDFJSONSerializable {
 
     // MARK: - PUBLIC VARS
-
+    /**
+    TODO: Documentation
+    */
+    public var customWidth: CGFloat?
     /**
      TODO: Documentation
      */
@@ -62,13 +65,14 @@ public class PDFGroup: PDFJSONSerializable {
                 backgroundImage: PDFImage? = nil,
                 backgroundShape: PDFDynamicGeometryShape? = nil,
                 outline: PDFLineStyle = .none,
-                padding: UIEdgeInsets = .zero) {
+                padding: UIEdgeInsets = .zero,customWidth:CGFloat? = nil) {
         self.allowsBreaks = allowsBreaks
         self.backgroundColor = backgroundColor
         self.backgroundImage = backgroundImage
         self.backgroundShape = backgroundShape
         self.outline = outline
         self.padding = padding
+        self.customWidth = customWidth
     }
 
     /**
@@ -80,6 +84,6 @@ public class PDFGroup: PDFJSONSerializable {
                         backgroundImage: self.backgroundImage,
                         backgroundShape: self.backgroundShape,
                         outline: self.outline,
-                        padding: self.padding)
+                        padding: self.padding, customWidth: self.customWidth)
     }
 }

@@ -348,7 +348,8 @@ public extension PDFDocument {
                                                backgroundImage: group.backgroundImage,
                                                backgroundShape: group.backgroundShape,
                                                outline: group.outline,
-                                               padding: group.padding))]
+                                               padding: group.padding,
+                                               customWidth: group.customWidth))]
     }
 
     /**
@@ -362,7 +363,7 @@ public extension PDFDocument {
                                           backgroundImage: group.backgroundImage,
                                           backgroundShape: group.backgroundShape,
                                           outline: group.outline,
-                                          padding: group.padding)
+                                          padding: group.padding, customWidth: group.customWidth)
     }
 
     /**

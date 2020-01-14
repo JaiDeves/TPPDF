@@ -33,7 +33,8 @@ class GroupExampleFactory: ExampleFactory {
         let group = PDFGroup(allowsBreaks: false,
                              backgroundColor: .green,
                              backgroundShape: shape,
-                             padding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 180))
+                             padding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 180),
+                             customWidth: 600)
         for i in 0..<10 {
             group.set(font: UIFont.systemFont(ofSize: 18))
             group.set(indentation: 30 * CGFloat(i % 5), left: true)

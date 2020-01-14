@@ -13,6 +13,11 @@ import UIKit
  */
 internal class PDFGroupObject: PDFRenderObject {
 
+    
+    /**
+     TODO: Documentation
+     */
+    internal var customWidth: CGFloat?
     /**
      TODO: Documentation
      */
@@ -63,7 +68,8 @@ internal class PDFGroupObject: PDFRenderObject {
                   backgroundImage: PDFImage?,
                   backgroundShape: PDFDynamicGeometryShape?,
                   outline: PDFLineStyle,
-                  padding: UIEdgeInsets) {
+                  padding: UIEdgeInsets,
+                  customWidth:CGFloat?=nil) {
         self.objects = objects
         self.allowsBreaks = allowsBreaks
         self.isFullPage = isFullPage
@@ -72,6 +78,7 @@ internal class PDFGroupObject: PDFRenderObject {
         self.backgroundShape = backgroundShape
         self.outline = outline
         self.padding = padding
+        self.customWidth = customWidth
     }
 
     /**
@@ -132,9 +139,10 @@ internal class PDFGroupObject: PDFRenderObject {
                                                          backgroundImage: backgroundImage,
                                                          backgroundShape: backgroundShape,
                                                          outline: outline,
-                                                         padding: padding)
+                                                         padding: padding, customWidth: customWidth)
 
             group.frame = isFullPage ? calculateBoundsFrame(generator: generator) : calculateFrame(objects: grouped)
+            group.frame.size.width = self.customWidth ?? group.frame.width
             result.append((container, group))
             result += grouped
         }
@@ -226,6 +234,6 @@ internal class PDFGroupObject: PDFRenderObject {
                               backgroundImage: self.backgroundImage?.copy,
                               backgroundShape: self.backgroundShape,
                               outline: self.outline,
-                              padding: self.padding)
+                              padding: self.padding, customWidth: self.customWidth)
     }
 }
